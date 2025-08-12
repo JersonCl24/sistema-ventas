@@ -7,7 +7,6 @@ const router = Router();
 //Definimos las rutas y que controladores responderán
 router.get('/', authRequired,getProductos);
 router.post('/',authRequired, createProductos);
-// Añadimos la nueva ruta dinámica ANTES de las rutas con :id para evitar conflictos
 router.get('/:id', authRequired,getProductoById);
 router.put('/:id',authRequired, updateProductos);
 router.delete('/:id',authRequired, deleteProductos);

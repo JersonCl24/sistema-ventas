@@ -2,7 +2,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { loginRequest, registerRequest } from '../api/authService';
 import toast from 'react-hot-toast';
-import { jwtDecode } from 'jwt-decode'; // Asegúrate de haber instalado: npm install jwt-decode
+import { jwtDecode } from 'jwt-decode'; 
 
 export const AuthContext = createContext();
 
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
             setIsAuthenticated(true);
         } catch (error) {
             toast.error(error.message || 'Error en el registro.');
-            throw error; // Lanza el error para que la página lo atrape
+            throw error; 
         } finally {
             setLoading(false);
         }
@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }) => {
             setIsAuthenticated(true);
         } catch (error) {
             toast.error(error.message || 'Credenciales incorrectas.');
-            throw error; // Lanza el error para que la página lo atrape
+            throw error;
         } finally {
             setLoading(false);
         }

@@ -5,7 +5,6 @@ const SummaryCard = ({ title, value, isCurrency = false }) => {
         ? `S/ ${Number(value).toFixed(2)}` 
         : Number(value).toLocaleString('es-PE');
 
-    // Asignamos colores basados en el título para un look más dinámico
     const getCardColor = () => {
         if (title.includes('Ganancia')) return 'from-green-500 to-green-700';
         if (title.includes('Gastos')) return 'from-red-500 to-red-700';

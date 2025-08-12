@@ -9,9 +9,6 @@ const getLatestBalance = async (connection, usuario_id) => {
     return rows.length > 0 ? parseFloat(rows[0].saldo_resultante) : 0;
 };
 
-// --- FUNCIÓN CORREGIDA ---
-// Ahora es una función 'ayudante' que espera recibir una conexión activa.
-// Ya no maneja beginTransaction, commit, rollback o release.
 export const registrarMovimiento = async (connection, { tipo, concepto, monto, usuario_id, venta_id = null, gasto_id = null }) => {
     try {
         const ultimoSaldo = await getLatestBalance(connection, usuario_id);
@@ -21,10 +18,9 @@ export const registrarMovimiento = async (connection, { tipo, concepto, monto, u
             'INSERT INTO movimientos_caja (tipo, concepto, monto, saldo_resultante, venta_id, gasto_id, usuario_id) VALUES (?, ?, ?, ?, ?, ?, ?)',
             [tipo, concepto, monto, nuevoSaldo, venta_id, gasto_id, usuario_id]
         );
-        // NO se hace commit aquí. La función que llama es la responsable.
     } catch (error) {
         console.error("Error al registrar movimiento de caja:", error);
-        throw error; // Propagamos el error para que la transacción principal haga rollback.
+        throw error;
     }
 };
 

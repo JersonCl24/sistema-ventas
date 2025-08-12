@@ -4,10 +4,10 @@ import db from '../database.js';
 // LEER categorías (solo las del usuario logueado)
 export const getCategorias = async (req, res) => {
     try {
-        const usuario_id = req.user.id; // Obtenemos el ID del usuario
+        const usuario_id = req.user.id; 
         const { search } = req.query;
-        
-        let query = 'SELECT * FROM categorias WHERE usuario_id = ?'; // <-- FILTRO PRINCIPAL POR USUARIO
+
+        let query = 'SELECT * FROM categorias WHERE usuario_id = ?';
         const params = [usuario_id];
 
         if (search) {
@@ -31,7 +31,6 @@ export const createCategorias = async (req, res) => {
         return res.status(400).json({ message: 'El nombre es un campo obligatorio' });
     }
     try {
-        // Añadimos la columna 'usuario_id' al INSERT
         const query = 'INSERT INTO categorias (nombre, usuario_id) VALUES (?, ?)';
         const [result] = await db.query(query, [nombre, usuario_id]);
         
@@ -49,13 +48,12 @@ export const createCategorias = async (req, res) => {
 export const updateCategorias = async (req, res) => {
     const { id } = req.params;
     const { nombre } = req.body;
-    const usuario_id = req.user.id; // Obtenemos el ID del usuario
+    const usuario_id = req.user.id; 
 
     if (!nombre) {
         return res.status(400).json({ message: 'El nombre es un campo obligatorio' });
     }
     try {
-        // Añadimos 'AND usuario_id = ?' para seguridad
         const query = 'UPDATE categorias SET nombre = ? WHERE id = ? AND usuario_id = ?';
         const [result] = await db.query(query, [nombre, id, usuario_id]);
         
@@ -72,10 +70,9 @@ export const updateCategorias = async (req, res) => {
 // BORRAR una categoría (solo si pertenece al usuario logueado)
 export const deleteCategorias = async (req, res) => {
     const { id } = req.params;
-    const usuario_id = req.user.id; // Obtenemos el ID del usuario
+    const usuario_id = req.user.id; // 
 
-    try {
-        // Añadimos 'AND usuario_id = ?' para seguridad
+    try {        
         const query = 'DELETE FROM categorias WHERE id = ? AND usuario_id = ?';
         const [result] = await db.query(query, [id, usuario_id]);
         
@@ -92,10 +89,10 @@ export const deleteCategorias = async (req, res) => {
 // OBTENER una categoría por ID (solo si pertenece al usuario logueado)
 export const getCategoryById = async (req, res) => {
     const { id } = req.params;
-    const usuario_id = req.user.id; // Obtenemos el ID del usuario
+    const usuario_id = req.user.id; 
 
     try {
-        // Añadimos 'AND usuario_id = ?' para seguridad
+        
         const [rows] = await db.query('SELECT * FROM categorias WHERE id = ? AND usuario_id = ?', [id, usuario_id]);
         
         if (rows.length === 0) {

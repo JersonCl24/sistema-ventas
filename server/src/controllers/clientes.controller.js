@@ -14,7 +14,7 @@ export const getClientes = async (req, res) => {
                 c.contacto, 
                 c.fecha_registro
             FROM clientes c
-            WHERE c.usuario_id = ?`; // <-- FILTRO PRINCIPAL POR USUARIO
+            WHERE c.usuario_id = ?`; 
             
         const params = [usuario_id];
     

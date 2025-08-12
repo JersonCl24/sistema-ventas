@@ -13,7 +13,6 @@ const MainLayout = ({ children }) => {
             <Toaster 
                 position="top-right"
                 toastOptions={{
-                    // Define default options
                     className: '',
                     duration: 5000,
                     style: {

@@ -1,9 +1,9 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 
-dotenv.config(); //cargamos las variables de entorno
+dotenv.config(); 
 
-//Creamos un pool de conexiones. Es mas eficiente que crear una conexion por cada consulta
+//Creamos un pool de conexiones. 
 const pool = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,

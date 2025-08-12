@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext.jsx'; // Asegúrate que la ruta sea correcta
+import { useAuth } from '../../context/AuthContext.jsx'; 
 import { 
     LayoutDashboard, 
     Package, 
@@ -12,11 +12,10 @@ import {
     BarChart3, 
     BookOpen,
     Banknote,
-    DollarSign, // <-- Se añade el icono que faltaba
+    DollarSign, 
     LogOut
 } from 'lucide-react';
 
-// Lista de enlaces de navegación para mantener el código limpio
 const navLinks = [
     { name: 'Dashboard', path: '/', icon: LayoutDashboard },
     { name: 'Catálogo', path: '/catalogo', icon: BookOpen },
@@ -27,7 +26,7 @@ const navLinks = [
     { name: 'Gastos', path: '/gastos', icon: CreditCard },
     { name: 'Ventas', path: '/ventas', icon: ShoppingCart },
     { name: 'Resumen Financiero', path: '/financials', icon: Banknote },
-    { name: 'Caja', path: '/caja', icon: DollarSign } // <-- Enlace de Caja integrado
+    { name: 'Caja', path: '/caja', icon: DollarSign } 
 ];
 
 const Sidebar = () => {
