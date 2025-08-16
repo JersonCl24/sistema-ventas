@@ -38,5 +38,4 @@ app.use('/api/financials', financialsRoutes);
 app.use('/api/caja', cajaRoutes); 
 
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });

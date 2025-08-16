@@ -10,6 +10,5 @@ const pool = mysql.createPool({
     password: process.env.DB_PASS,
     database: process.env.DB_NAME
 });
-console.log('Conexión a la base de datos establecida');
 
 export default pool;
